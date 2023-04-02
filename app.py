@@ -232,7 +232,7 @@ if st.button('Predict'):
   result= pipe.predict_proba(input_df)
   loss=result[0][0]
   win=result[0][1]
-  st.write(f"# {batting_team} vs {bowling_team}")
+#   st.write(f"# {batting_team} vs {bowling_team}")
   st.write("## Winning Probability:")
   Theam(batting_team)
   Batting_bar = st.progress(win)
