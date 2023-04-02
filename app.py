@@ -2,6 +2,16 @@ import streamlit as st
 import pickle as pk 
 import pandas as pd
 from st_aggrid import AgGrid
+st.set_page_config(page_title="IPL", page_icon='🏏', layout="centered",initial_sidebar_state='auto')
+# Hide the "Made with Streamlit" footer
+hide_streamlit_style="""
+    <style>
+    #MainMenu{visibility:hidden;}
+    footer{visibility:hidden;}
+    </style>
+
+    """
+st.markdown(hide_streamlit_style,unsafe_allow_html=True)
 st.title('Ipl Win predictor')
 pipe=pk.load(open('pipe.pkl','rb'))
 
