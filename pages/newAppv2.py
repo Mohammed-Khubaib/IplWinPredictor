@@ -13,38 +13,7 @@ hide_streamlit_style="""
     """
 st.markdown(hide_streamlit_style,unsafe_allow_html=True)
 st.title('Ipl Win predictor')
-pipe=pk.load(open('pipe1.pkl','rb'))
-
-col1, col2 = st.columns(2)
-
-T1=['Sunrisers Hyderabad',
- 'Mumbai Indians',
- 'Gujarat Titans',
- 'Lucknow Supergiants',
- 'Royal Challengers Bangalore',
- 'Kolkata Knight Riders',
- 'Punjab kings',
- 'Chennai Super Kings',
- 'Rajasthan Royals',
- 'Delhi Capitals']
-T2=['Sunrisers Hyderabad',
- 'Mumbai Indians',
- 'Gujarat Titans',
- 'Lucknow Supergiants',
- 'Royal Challengers Bangalore',
- 'Kolkata Knight Riders',
- 'Punjab kings',
- 'Chennai Super Kings',
- 'Rajasthan Royals',
- 'Delhi Capitals']
-
-C=['Hyderabad', 'Pune', 'Rajkot', 'Indore', 'Bangalore', 'Mumbai',
-       'Kolkata', 'Delhi', 'Chandigarh', 'Kanpur', 'Jaipur', 'Chennai',
-       'Cape Town', 'Port Elizabeth', 'Durban', 'Centurion',
-       'East London', 'Johannesburg', 'Kimberley', 'Bloemfontein',
-       'Ahmedabad', 'Cuttack', 'Nagpur', 'Dharamsala', 'Kochi',
-       'Visakhapatnam', 'Raipur', 'Ranchi', 'Abu Dhabi', 'Sharjah',
-       'Mohali', 'Bengaluru']
+pipe=pk.load(open('pipe4.pkl','rb'))
 
 def Theam(Team):
     if Team =="Sunrisers Hyderabad":
@@ -201,13 +170,6 @@ def Theam(Team):
 
 def Balls(ball_No,n):
   return (ball_No)*10 - 4*n
-
-with col1:
-    batting_team= st.selectbox('Select the batting team',sorted(T1))
-with col2:
-    T2.remove(batting_team)
-    bowling_team= st.selectbox('Select the bowling team',(T2))
-selected_city=st.selectbox('Select the host City',sorted(C))
 target=st.number_input("Target",step=1)
 # target=179
 col3,col4,col5=st.columns(3)
@@ -228,10 +190,9 @@ balls_left=round(120-Overs)
 wickets=10-wickets
 crr=Score/OverNo
 rrr=(runs_left*6)/balls_left
+if rrr >=20 :
+    rrr = 100
 input_df=pd.DataFrame({
-      'batting_team':[batting_team],
-      'bowling_team':[bowling_team],
-      'city':[selected_city], 
       'runs_left':[runs_left], 
       'balls_left':[balls_left],
       'wickets':[wickets], 
@@ -245,9 +206,9 @@ loss=result[0][0]
 win=result[0][1]
 #   st.write(f"# {batting_team} vs {bowling_team}")
 st.write("## Winning Probability:")
-Theam(batting_team)
+# Theam(batting_team)
 Batting_bar = st.progress(win)
-st.write(batting_team,"- ",str(round(win*100)),"%")
+st.write(str(round(win*100)),"%")
 #   st.write(batting_team,"- ",str(round(win*100)),"%")
 #   st.write(bowling_team,"- ",str(round(loss*100)),"%")
 
