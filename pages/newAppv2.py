@@ -190,8 +190,8 @@ balls_left=round(120-Overs)
 wickets=10-wickets
 crr=Score/OverNo
 rrr=(runs_left*6)/balls_left
-if rrr >=20 :
-    rrr = 100
+# if rrr >=20 :
+#     rrr = 100
 input_df=pd.DataFrame({
       'runs_left':[runs_left], 
       'balls_left':[balls_left],
