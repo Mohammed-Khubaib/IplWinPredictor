@@ -2,4 +2,4 @@
 
 ![v1](./image/v1.png)
 
-![v2](./Image/v2.png)
+![v2](./image/v2.png)
