@@ -1,5 +1,5 @@
 ## ML WebApp look
 
-![v1](./images/v1.png)
+![v1](./image/v1.png)
 
-![v2](./Images/v2.png)
+![v2](./Image/v2.png)
