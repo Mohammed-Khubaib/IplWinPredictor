@@ -11,8 +11,8 @@ if file is not None:
         tmp_file.write(file.read())
         book = open(tmp_file.name, 'rb')
 
-    pdfReader = PyPDF2.PdfFileReader(book)
-    pages = pdfReader.getNumPages()
+    pdfReader = PyPDF2.PdfReader(book)
+    pages = len(pdfReader.pages)
 
     speaker = pyttsx3.init()
     s = st.number_input("Starting PageNo.")
@@ -21,6 +21,8 @@ if file is not None:
     if button:
         for num in range(s-1, e):
             page = pdfReader.pages[num]
-            text = page.extractText()
+            text = page.extract_text()
             speaker.say(text)
             speaker.runAndWait()
+
+    os.remove(tmp_file.name)
